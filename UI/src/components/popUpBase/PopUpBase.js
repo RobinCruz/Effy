@@ -17,6 +17,8 @@ function PopUpBase({
   setMessage,
   setOpenError,
   companyList,
+  getCompanyList,
+  getUserList
 }) {
   useEffect(() => {
     console.log(viewId);
@@ -48,6 +50,8 @@ function PopUpBase({
             viewId={viewId}
             openPopUp={openPopUp}
             setOpenPopUp={setOpenPopUp}
+            getCompanyList={getCompanyList}
+            getUserList={getUserList}
           />
         )}
         {popUpType.includes("list") && (
@@ -62,6 +66,7 @@ function PopUpBase({
             setMessage={setMessage}
             setOpenError={setOpenError}
             companyList={companyList}
+            getCompanyList={getCompanyList}
           />
         )}
       </div>

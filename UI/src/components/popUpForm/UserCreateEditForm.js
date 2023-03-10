@@ -2,7 +2,7 @@ import { Button, Grid, MenuItem, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function UserCreateEditForm({ popUpType, viewId, setOpenPopUp }) {
+function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
   const currentDate = new Date();
   const [data, setData] = useState({
     firstName: "",
@@ -59,6 +59,7 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp }) {
       axios.post("http://localhost:5000/user", data).then((response) => {
         console.log(response);
         setOpenPopUp(false);
+        getUserList();
       });
     } else {
       axios
@@ -66,6 +67,7 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp }) {
         .then((response) => {
           console.log(response);
           setOpenPopUp(false);
+          getUserList();
         });
     }
   };

@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import Geocode from "react-geocode";
 import "./PopUpForm.css";
 
-function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp }) {
+function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, getCompanyList }) {
   const [data, setData] = useState({
     companyname: "",
     companyaddress: "",
@@ -38,17 +38,6 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp }) {
   };
   const handleGetCoordinates = () => {
     setIsLoad(true);
-    // axios({
-    //   method: "get",
-    //   baseURL: "http://api.positionstack.com",
-    //   url: "/v1/forward",
-    //   params: {
-    //     access_key: "2d60b9f86d013fa0987abcf35416a2af",
-    //     query: data.companyaddress,
-    //   },
-    // }).then((res) => {
-    //   console.log(res);
-    // });
 
     axios
       .get("https://geocode.maps.co/search?q=" + data.companyaddress)
@@ -59,9 +48,6 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp }) {
           "coordinates"
         );
       });
-    // setTimeout(() => {
-    //   setIsLoad(false);
-    // }, 5000);
 
     setIsLoad(false);
   };
@@ -81,6 +67,7 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp }) {
       axios.post("http://localhost:5000/company", data).then((response) => {
         console.log(response);
         setOpenPopUp(false);
+        getCompanyList();
       });
     } else {
       axios
@@ -88,6 +75,7 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp }) {
         .then((response) => {
           console.log(response);
           setOpenPopUp(false);
+          getCompanyList();
         });
     }
   };

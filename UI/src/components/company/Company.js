@@ -13,11 +13,13 @@ function Company({
   isDetails,
   setMessage,
   setOpenError,
+  getCompanyList
 }) {
   const handleDelete = (id) => {
     console.log("delete company: " + id);
     axios.delete("http://localhost:5000/company/" + id).then((response) => {
       console.log(response);
+      getCompanyList();
     });
   };
   const handleView = (id) => {
