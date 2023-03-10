@@ -1,0 +1,10 @@
+.display-card {
+  padding: 2rem;
+  margin-top: 1rem;
+}
+.display-card-name {
+  font-size: 2rem;
+}
+.action-items {
+  margin-left: 2px;
+}

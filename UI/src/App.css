@@ -1,0 +1,14 @@
+.flex-display {
+  display: flex !important;
+}
+.display-flex-right {
+  margin-left: auto !important;
+}
+.type-display-group {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.create-button {
+  margin-right: 2rem !important;
+}

@@ -1,0 +1,7 @@
+.popup-form-main {
+  width: 80vw;
+  height: 95vh;
+  overflow-y: auto;
+  background-color: aliceblue;
+  color: black;
+}

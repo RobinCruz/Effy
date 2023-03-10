@@ -1,0 +1,17 @@
+.details-header {
+  font-size: 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.details-main {
+  padding: 2rem;
+}
+.bold {
+  font-weight: bold;
+}
+.map-frame {
+  height: 10rem;
+  width: 20rem;
+}

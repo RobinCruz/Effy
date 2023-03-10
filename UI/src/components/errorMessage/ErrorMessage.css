@@ -1,0 +1,13 @@
+.error-main {
+  width: 30vw;
+  height: 30vh;
+  background-color: aliceblue;
+  color: black;
+}
+.error-popup-message {
+  margin-top: 2rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-weight: bold;
+}

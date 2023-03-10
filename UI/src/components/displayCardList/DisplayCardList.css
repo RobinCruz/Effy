@@ -1,0 +1,17 @@
+.display-card-list-main {
+  margin: 0 6rem 0 6rem;
+}
+.display-list-filter {
+  margin-bottom: 2rem !important;
+}
+.display-card-list-body {
+  background-color: white;
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 55vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.display-card-list-body:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
