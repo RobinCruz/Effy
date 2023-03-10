@@ -19,9 +19,6 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp }) {
     companyId: "",
   });
   const [companyList, setCompanyList] = useState([
-    { id: 1, value: "effy" },
-    { id: 2, value: "Accenture" },
-    { id: 3, value: "Mindtree" },
   ]);
   const [designationList, setdesignation] = useState([
     "developer",

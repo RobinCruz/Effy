@@ -19,10 +19,7 @@ function CompanyDetails({
     name: "Effy",
     address: "Guindy",
     coordinates: "N125.13 E13.17",
-    usersList: [
-      { name: "selva", id: 1, companyId: 2 },
-      { name: "robin", id: 2, companyId: 3 },
-    ],
+    usersList: [],
   });
   useEffect(() => {
     const iframe = document.getElementById("map-frameId");

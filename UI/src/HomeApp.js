@@ -15,21 +15,9 @@ function HomeApp() {
   const [errorMessage, setMessage] = useState("here comes error");
   const [openError, setOpenError] = useState(false);
   const [usersList, setUsersList] = useState({
-    usersList: [
-      { name: "selva", id: 1, companyId: 2 },
-      { name: "robin", id: 2, companyId: 3 },
-      { name: "soumya", id: 3, companyId: 1 },
-      { name: "selva  fg", id: 4, companyId: 2 },
-      { name: "robin fgf", id: 5, companyId: 3 },
-      { name: "soumya fghf", id: 7, companyId: 1 },
-      { name: "selva sdefsdf", id: 8, companyId: 2 },
-      { name: "robin sdfgs ", id: 9, companyId: 3 },
-      { name: "soumya sdfgsrfgs", id: 10, companyId: 1 },
-    ],
+    usersList: [],
   });
   const [companyList, setCompanyList] = useState([
-    { id: "77a41bfd3d754b65baf8d1b355907c1e", name: "Effy" },
-    { id: "77a41bfd3d754b65baf8d1b355907jj", name: "Accenture" },
   ]);
 
   useEffect(() => {
