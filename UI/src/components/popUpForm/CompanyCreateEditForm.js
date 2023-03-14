@@ -36,21 +36,6 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
       return { ...pre };
     });
   };
-  const handleGetCoordinates = () => {
-    setIsLoad(true);
-
-    axios
-      .get("https://geocode.maps.co/search?q=" + data.companyaddress)
-      .then((response) => {
-        console.log(response);
-        handleChangeData(
-          response.data[0].lat + "," + response.data[0].lon,
-          "coordinates"
-        );
-      });
-
-    setIsLoad(false);
-  };
   const handleCancel = () => {
     if (!popUpType.includes("create-form")) {
       setOpenPopUp(false);
@@ -62,22 +47,28 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
       });
     }
   };
-  const handleSave = () => {
-    if (data.id === undefined) {
-      axios.post("http://localhost:5000/company", data).then((response) => {
+  const handleSave = async () => {
+    axios
+      .get("https://geocode.maps.co/search?q=" + data.companyaddress)
+      .then((response) => {
         console.log(response);
-        setOpenPopUp(false);
-        getCompanyList();
+        if (data.id === undefined) {
+          axios.post("http://localhost:5000/company", {...data, coordinates:response.data[0].lat + "," + response.data[0].lon})
+          .then((response) => {
+            console.log(response);
+            setOpenPopUp(false);
+            getCompanyList();
+          });
+        } else {
+          axios
+            .put("http://localhost:5000/company/" + data.id, {...data, coordinates:response.data[0].lat + "," + response.data[0].lon})
+            .then((response) => {
+              console.log(response);
+              setOpenPopUp(false);
+              getCompanyList();
+            });
+        }
       });
-    } else {
-      axios
-        .put("http://localhost:5000/company/" + data.id, data)
-        .then((response) => {
-          console.log(response);
-          setOpenPopUp(false);
-          getCompanyList();
-        });
-    }
   };
   return (
     <div>
@@ -111,27 +102,6 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
             }}
             rows={4}
             fullWidth
-          />
-        </Grid>
-        <Grid xs={6} className="get-coordinates-container">
-          <Button
-            variant="contained"
-            className="company-form-field"
-            onClick={() => handleGetCoordinates()}
-          >
-            Get Coordinates
-          </Button>
-        </Grid>
-        <Grid xs={12}>
-          <TextField
-            id="coordinates-text-felid"
-            label="coordinates"
-            className="company-form-field"
-            variant="standard"
-            value={data.coordinates}
-            onChange={(e) => {
-              handleChangeData(e.target.value, "coordinates");
-            }}
           />
         </Grid>
         <Grid item xs={4}></Grid>
