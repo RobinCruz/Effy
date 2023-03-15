@@ -13,7 +13,8 @@ function Company({
   isDetails,
   setMessage,
   setOpenError,
-  getCompanyList
+  getCompanyList,
+  selectType
 }) {
   const handleDelete = (id) => {
     console.log("delete company: " + id);
@@ -62,6 +63,7 @@ function Company({
         handleUpdate={handleUpdate}
         handleRemove={handleRemove}
         isDetails={isDetails}
+        selectType={selectType}
       />
     </>
   );

@@ -14,35 +14,44 @@ function DisplayCard({
 }) {
   return (
     <>
-      <Card variant="outlined" className="display-card flex-display">
+      <Card className="display-card flex-display">
         <span className="display-card-name">{value.name}</span>
-        <span className="display-card-actions display-flex-right">
-          <Edit
-            className="action-items"
-            onClick={() => {
-              handleUpdate(value.id);
-            }}
-          ></Edit>
-          {!isDetails && (
-            <Delete
+        <div className="display-flex-right">
+          {Object.keys(value).length > 2 ?
+          <span className={value.active > 0 ? 'active' : 'inactive'}>
+            {
+              value.active > 0 ? "Active" : "Inactive" 
+            }
+          </span> : null
+          }
+          <span className="display-card-actions">
+            <Edit
+              className="action-items"
               onClick={() => {
-                handleDelete(value.id);
+                handleUpdate(value.id);
               }}
-            ></Delete>
-          )}
-          {isDetails && (
-            <RemoveCircleOutlineIcon
+            ></Edit>
+            {!isDetails && (
+              <Delete
+                onClick={() => {
+                  handleDelete(value.id);
+                }}
+              ></Delete>
+            )}
+            {isDetails && (
+              <RemoveCircleOutlineIcon
+                onClick={() => {
+                  handleRemove(value.id);
+                }}
+              />
+            )}
+            <ExpandMoreIcon
               onClick={() => {
-                handleRemove(value.id);
+                handleView(value.id);
               }}
-            />
-          )}
-          <ExpandMoreIcon
-            onClick={() => {
-              handleView(value.id);
-            }}
-          ></ExpandMoreIcon>
-        </span>
+            ></ExpandMoreIcon>
+          </span>
+        </div>
       </Card>
     </>
   );

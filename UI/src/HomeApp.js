@@ -54,6 +54,7 @@ function HomeApp() {
           setOpenError={setOpenError}
           setMessage={setMessage}
           getUserList={getUserList}
+          selectType={selectType}
         />
       ) : (
         <Company
@@ -65,6 +66,7 @@ function HomeApp() {
           setOpenError={setOpenError}
           setMessage={setMessage}
           getCompanyList={getCompanyList}
+          selectType={selectType}
         />
       )}
 

@@ -12,6 +12,7 @@ function Users({
   setMessage,
   setOpenError,
   getUserList,
+  selectType
 }) {
   const handleDelete = (id) => {
     console.log("delete user: " + id);
@@ -69,6 +70,7 @@ function Users({
         handleUpdate={handleUpdate}
         handleRemove={handleRemove}
         isDetails={isDetails}
+        selectType={selectType}
       />
     </>
   );

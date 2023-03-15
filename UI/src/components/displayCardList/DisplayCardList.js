@@ -10,6 +10,7 @@ function DisplayCardList({
   handleView,
   handleRemove,
   isDetails,
+  selectType
 }) {
   const [filterValue, setFilterValue] = useState("");
   useEffect(() => {
@@ -20,6 +21,14 @@ function DisplayCardList({
   };
   return (
     <div className="display-card-list-main">
+      { 
+        selectType !== "usr" ?
+        <div className="display-card-list-body">
+        <h1>Companies</h1>
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1cvar52ffvcvI2Cm5IBNcMCM7jp1xpcQ&ehbc=2E312F" 
+        width="640" height="420"></iframe></div> : null
+      }
+      <br></br>
       <TextField
         id="filter-text-felid"
         label="filter"

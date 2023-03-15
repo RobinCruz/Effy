@@ -5,7 +5,7 @@
   margin-bottom: 2rem !important;
 }
 .display-card-list-body {
-  background-color: white;
+  background-color: aliceblue;
   padding: 1rem;
   overflow-y: auto;
   max-height: 55vh;
@@ -14,4 +14,9 @@
 }
 .display-card-list-body:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.display-map-name {
+  font-size: 2rem;
+  font-family: monospace;
+  font-weight: bold;
 }
