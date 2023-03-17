@@ -28,16 +28,16 @@ function PopUpBase({
       sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={openPopUp}
     >
-      <div className="popup-form-main  ">
-        <div className="flex-display">
+      <div className={popUpType.includes("list") ? "popup-form-main" : "popup-form-crud"}>
+        {/* <div className="flex-display">
           <Close
             className="display-flex-right"
             onClick={() => {
               handlePopUpClose();
             }}
           />
-        </div>
-        <br />
+        </div> */}
+        {/* <br /> */}
         {[
           "usr-create-form",
           "usr-edit-form",
@@ -45,6 +45,7 @@ function PopUpBase({
           "comp-edit-form",
         ].includes(popUpType) && (
           <PopUpForm
+            handlePopUpClose={handlePopUpClose}
             selectType={selectType}
             popUpType={popUpType}
             viewId={viewId}

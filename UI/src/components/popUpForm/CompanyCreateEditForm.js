@@ -6,13 +6,17 @@ import {
   Grid,
   TextareaAutosize,
   TextField,
+  AppBar,
+  Toolbar,
+  Typography
 } from "@mui/material";
+import { Close } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Geocode from "react-geocode";
 import "./PopUpForm.css";
 
-function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, getCompanyList }) {
+function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, getCompanyList, handlePopUpClose }) {
   const [data, setData] = useState({
     companyname: "",
     companyaddress: "",
@@ -73,14 +77,28 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
   return (
     <div>
       <div className="form-header">
-        {popUpType.includes("create-form")
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {popUpType.includes("create-form")
           ? "Create New Company"
           : "Update Company Details"}
+          </Typography>
+          <div className="flex-display">
+            <Close
+              className="display-flex-right"
+              onClick={() => {
+                handlePopUpClose();
+              }}
+            />
+          </div>
+        </Toolbar>
+      </AppBar>
       </div>
       <Grid container className="form-basic" colSpacing={2} rowSpacing={2}>
         <Grid item xs={12}>
           <TextField
-            id="name-text-felid"
+            id="name-text-feild"
             label="Company Name"
             variant="standard"
             className="company-form-field"
@@ -92,7 +110,7 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
         </Grid>
         <Grid xs={6}>
           <TextField
-            placeholder="enter ur complete address"
+            placeholder="Enter your complete address"
             label="Address"
             multiline
             className="company-form-field"
@@ -105,7 +123,7 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
           />
         </Grid>
         <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <Button
             className="company-form-field"
             variant="outlined"
@@ -125,7 +143,6 @@ function CompanyCreateEditForm({ popUpType, viewId, openPopUp, setOpenPopUp, get
             {popUpType.includes("create-form") ? "create" : "Update"}
           </Button>
         </Grid>
-        <Grid item xs={4}></Grid>
       </Grid>
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}

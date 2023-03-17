@@ -5,3 +5,11 @@
   background-color: aliceblue;
   color: black;
 }
+
+.popup-form-crud {
+  width: 30vw;
+  height: 50vh;
+  overflow-y: auto;
+  background-color: aliceblue;
+  color: black;
+}

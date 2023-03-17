@@ -3,11 +3,12 @@ import CompanyCreateEditForm from "./CompanyCreateEditForm";
 import UserCreateEditForm from "./UserCreateEditForm";
 import "./PopUpForm.css";
 
-function PopUpForm({ selectType, popUpType, viewId, openPopUp, setOpenPopUp, getUserList, getCompanyList }) {
+function PopUpForm({ selectType, popUpType, viewId, openPopUp, setOpenPopUp, getUserList, getCompanyList, handlePopUpClose }) {
   return (
     <>
       {popUpType.includes("usr") ? (
         <UserCreateEditForm
+          handlePopUpClose={handlePopUpClose}
           popUpType={popUpType}
           viewId={viewId}
           openPopUp={openPopUp}
@@ -16,6 +17,7 @@ function PopUpForm({ selectType, popUpType, viewId, openPopUp, setOpenPopUp, get
         />
       ) : (
         <CompanyCreateEditForm
+          handlePopUpClose={handlePopUpClose}
           popUpType={popUpType}
           viewId={viewId}
           openPopUp={openPopUp}

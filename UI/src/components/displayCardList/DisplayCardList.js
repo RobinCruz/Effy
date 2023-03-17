@@ -30,7 +30,7 @@ function DisplayCardList({
       }
       <br></br>
       <TextField
-        id="filter-text-felid"
+        id="filter-text-feild"
         label="filter"
         variant="standard"
         value={filterValue}

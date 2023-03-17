@@ -1,8 +1,9 @@
-import { Button, Grid, MenuItem, TextField } from "@mui/material";
+import { Button, Grid, MenuItem, TextField, AppBar, Toolbar, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
+function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList, handlePopUpClose }) {
   const currentDate = new Date();
   const [data, setData] = useState({
     firstName: "",
@@ -21,10 +22,10 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
   const [companyList, setCompanyList] = useState([
   ]);
   const [designationList, setdesignation] = useState([
-    "developer",
-    "testing",
-    "junior developer",
-    "senior developer",
+    "Developer",
+    "Testing",
+    "Junior Developer",
+    "Senior Developer",
   ]);
 
   useEffect(() => {
@@ -75,41 +76,56 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
   return (
     <div>
       <div className="form-header">
-        {popUpType.includes("create-form")
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {popUpType.includes("create-form")
           ? "Create New User"
           : "Update User Details"}
+          </Typography>
+          <div className="flex-display">
+            <Close
+              className="display-flex-right"
+              onClick={() => {
+                handlePopUpClose();
+              }}
+            />
+          </div>
+        </Toolbar>
+      </AppBar>
       </div>
       <Grid container className="form-basic" spacing={7}>
-        <Grid xs={4} item>
+        <Grid xs={6} item>
           <TextField
-            id="first-name-text-felid"
-            fullWidth
+            id="first-name-text-field"
             label="First Name"
             variant="standard"
+            className="user-form-field"
             value={data.firstname}
             onChange={(e) => {
               handleChangeData(e.target.value, "firstname");
             }}
           />
         </Grid>
-        <Grid xs={4} item>
+        <Grid xs={6} item>
           <TextField
-            id="last-name-text-felid"
-            fullWidth
+            id="last-name-text-field"
             label="Last Name"
             variant="standard"
+            className="user-form-field"
             value={data.lastname}
             onChange={(e) => {
               handleChangeData(e.target.value, "lastname");
             }}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={8}>
           <TextField
-            id="email-text-felid"
+            id="email-text-field"
             fullWidth
             label="Email"
             variant="standard"
+            className="user-form-field"
             type="email"
             value={data.email}
             onChange={(e) => {
@@ -117,13 +133,15 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
             }}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={4}></Grid>
+        <Grid item xs={6}>
           <TextField
             select
-            id="designation-text-felid"
+            id="designation-text-field"
             fullWidth
             label="Designation"
             variant="standard"
+            className="user-form-field"
             value={data.designation}
             onChange={(e) => {
               handleChangeData(e.target.value, "designation");
@@ -143,18 +161,18 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
             required
             label="D.O.B"
             variant="standard"
+            className="user-form-field"
             value={data.dob}
             onChange={(e) => {
               handleChangeData(e.target.value, "dob");
             }}
           />
         </Grid>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={8}>
           <Button
             variant="outlined"
-            className="company-form-field"
+            className="user-form-field"
             onClick={() => {
               handleCancel();
             }}
@@ -163,7 +181,7 @@ function UserCreateEditForm({ popUpType, viewId, setOpenPopUp, getUserList }) {
           </Button>
           <Button
             variant="contained"
-            className="company-form-field"
+            className="user-form-field"
             onClick={() => {
               handleSave();
             }}
