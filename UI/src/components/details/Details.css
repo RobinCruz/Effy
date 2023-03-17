@@ -15,3 +15,15 @@
   height: 10rem;
   width: 20rem;
 }
+.value {
+  font-size:larger ;
+  padding-left: 1rem !important;
+}
+.head {
+  font-weight: bold;
+  font-size: larger;
+  padding-left: 1rem;
+}
+label#Company-text-feild-label {
+  padding-left: 1rem;
+}

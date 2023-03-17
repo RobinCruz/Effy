@@ -12,7 +12,14 @@ function UsersDetails({
   companyList,
 }) {
   const [isEdited, setIsEdited] = useState(false);
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    dob: "",
+    designation: "",
+    email: "",
+    company_id: "",
+  });
   const handleChangeData = (value, key) => {
     setIsEdited(true);
     setData((pre) => {
@@ -41,18 +48,21 @@ function UsersDetails({
   return (
     <div className="details-main">
       <Grid container spacing={7}>
-        <Grid item xs={4}>
-          Name:
-          {data.firstname + " " + data.lastname}
+        <Grid item xs={6}>
+          <span className="head">Name</span> <br></br><br></br>
+          <span className="value">{data.firstname + " " + data.lastname}</span>
         </Grid>
-        <Grid item xs={4}>
-          E-Mail: {data.email}
+        <Grid item xs={6}>
+          <span className="head">E-Mail</span> <br></br><br></br>
+          <span className="value">{data.email}</span>
         </Grid>
-        <Grid item xs={4}>
-          D.O.B: {data.dob}
+        <Grid item xs={6}>
+          <span className="head">D.O.B</span> <br></br><br></br>
+          <span className="value">{data.dob}</span>
         </Grid>
-        <Grid item xs={4}>
-          Designation: {data.designation}
+        <Grid item xs={6}>
+          <span className="head">Designation</span> <br></br><br></br>
+          <span className="value">{data.designation}</span>
         </Grid>
         <Grid item xs={4}>
           <TextField
@@ -60,6 +70,7 @@ function UsersDetails({
             id="Company-text-feild"
             label="Company"
             variant="standard"
+            className="value"
             fullWidth
             defaultValue={data.company_id}
             value={data.company_id}
@@ -74,7 +85,7 @@ function UsersDetails({
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12}>
           <Button
             variant="contained"
             className="company-form-field"
@@ -82,7 +93,6 @@ function UsersDetails({
               handleChangeTeam();
             }}
           >
-            {" "}
             Change Company
           </Button>
         </Grid>
