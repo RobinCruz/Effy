@@ -11,4 +11,11 @@
 }
 .create-button {
   margin-right: 2rem !important;
+  height: 2rem;
+}
+.main-body-component {
+  margin-top: 4rem;
+}
+.text-bold {
+  font-weight: bold;
 }

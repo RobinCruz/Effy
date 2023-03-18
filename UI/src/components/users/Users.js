@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import DisplayCardList from "../displayCardList/DisplayCardList";
+import DisplayTableList from "../displayTable/DisplayTableList";
 
 function Users({
   isDetails,
@@ -49,21 +50,7 @@ function Users({
   }
   return (
     <>
-      {!isDetails && (
-        <div className="flex-display">
-          <Button
-            variant="contained"
-            className="display-flex-right create-button"
-            onClick={() => {
-              handleCreateUser();
-            }}
-          >
-            Create new User
-          </Button>
-        </div>
-      )}
-
-      <DisplayCardList
+      <DisplayTableList
         listValue={usersList.usersList}
         handleDelete={handleDelete}
         handleView={handleView}
@@ -71,6 +58,7 @@ function Users({
         handleRemove={handleRemove}
         isDetails={isDetails}
         selectType={selectType}
+        handleCreate={handleCreateUser}
       />
     </>
   );

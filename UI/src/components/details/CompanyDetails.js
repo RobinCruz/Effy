@@ -15,11 +15,11 @@ function CompanyDetails({
   setOpenError,
 }) {
   const [data, setData] = useState({
-    id: "77a41bfd3d754b65baf8d1b355907c1e",
-    name: "Effy",
-    address: "Guindy",
-    coordinates: "N125.13 E13.17",
-    usersList: [],
+    id: "",
+    name: "",
+    address: "",
+    coordinates: "",
+    usersList: [{}],
   });
   useEffect(() => {
     const iframe = document.getElementById("map-frameId");

@@ -1,51 +1,93 @@
 import {
   AppBar,
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
   FormControl,
   FormControlLabel,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Radio,
   RadioGroup,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import BusinessIcon from "@mui/icons-material/Business";
+import GroupIcon from "@mui/icons-material/Group";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 
 function Header({ selectType, setType }) {
+  const drawerWidth = 340;
+
+  const [mobileOpen, setMobileOpen] = useState(true);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
     <>
-      <AppBar position="static">
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            CompanyUsers
+          <Typography variant="h6" noWrap component="div">
+            CompanyUser
           </Typography>
         </Toolbar>
       </AppBar>
-      <div className="type-display-group header-group">
-        <span
-          className={
-            selectType === "usr" ? "header-list selected-header" : "header-list"
-          }
-          onClick={() => {
-            setType("usr");
-          }}
-        >
-          {" "}
-          Users
-        </span>
-        <span
-          className={
-            selectType === "comp"
-              ? "header-list selected-header"
-              : "header-list "
-          }
-          onClick={() => {
-            setType("comp");
-          }}
-        >
-          {" "}
-          Companies
-        </span>
-      </div>
+      <Drawer
+        variant="permanent"
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          [`& .MuiDrawer-paper`]: {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
+        }}
+      >
+        <Toolbar />
+        <Box sx={{ overflow: "auto" }}>
+          <List>
+            <ListItem key="user" disablePadding>
+              <ListItemButton
+                selected={selectType === "usr"}
+                onClick={() => {
+                  setType("usr");
+                }}
+              >
+                <ListItemIcon>
+                  <GroupIcon />
+                </ListItemIcon>
+                <ListItemText primary="Users List" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem key="company" disablePadding>
+              <ListItemButton
+                selected={selectType === "comp"}
+                onClick={() => {
+                  setType("comp");
+                }}
+              >
+                <ListItemIcon>
+                  <BusinessIcon />
+                </ListItemIcon>
+                <ListItemText primary="Company List" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+          <Divider />
+        </Box>
+      </Drawer>
     </>
   );
 }

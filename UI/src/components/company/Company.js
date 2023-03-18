@@ -4,6 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import "./Company.css";
 import axios from "axios";
+import DisplayTableList from "../displayTable/DisplayTableList";
 
 function Company({
   setOpenPopUp,
@@ -45,18 +46,7 @@ function Company({
   };
   return (
     <>
-      <div className="flex-display">
-        <Button
-          variant="contained"
-          className="display-flex-right create-button"
-          onClick={() => {
-            handleCreateCompany();
-          }}
-        >
-          Create new Company
-        </Button>
-      </div>
-      <DisplayCardList
+      <DisplayTableList
         listValue={companyList}
         handleDelete={handleDelete}
         handleView={handleView}
@@ -64,6 +54,7 @@ function Company({
         handleRemove={handleRemove}
         isDetails={isDetails}
         selectType={selectType}
+        handleCreate={handleCreateCompany}
       />
     </>
   );

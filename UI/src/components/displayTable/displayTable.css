@@ -1,0 +1,20 @@
+.active {
+  color: #014c01;
+  font-size: 17px;
+  border-color: green;
+  padding: 7px;
+  background-color: rgb(186 234 186);
+  border-radius: 1rem;
+  margin-right: 12px;
+}
+.inactive {
+  color: #710e0e;
+  font-size: 17px;
+  border-color: red;
+  padding: 7px;
+  background-color: rgb(229 191 191);
+  border-radius: 1rem;
+}
+.status-head {
+  margin-right: 28px !important;
+}

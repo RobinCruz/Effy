@@ -6,6 +6,7 @@ import { Backdrop } from "@mui/material";
 import PopUpBase from "./components/popUpBase/PopUpBase";
 import axios from "axios";
 import ErrorMessage from "./components/errorMessage/ErrorMessage";
+import { Box } from "@mui/system";
 
 function HomeApp() {
   const [selectType, setType] = useState("usr");
@@ -15,10 +16,9 @@ function HomeApp() {
   const [errorMessage, setMessage] = useState("here comes error");
   const [openError, setOpenError] = useState(false);
   const [usersList, setUsersList] = useState({
-    usersList: [],
+    usersList: [{}],
   });
-  const [companyList, setCompanyList] = useState([
-  ]);
+  const [companyList, setCompanyList] = useState([{}]);
 
   useEffect(() => {
     getUserList();
@@ -42,57 +42,63 @@ function HomeApp() {
   };
 
   return (
-    <>
+    <Box sx={{ display: "flex" }}>
       <Header setType={setType} selectType={selectType} />
-      {selectType === "usr" ? (
-        <Users
-          isDetails={false}
-          usersList={usersList}
-          setOpenPopUp={setOpenPopUp}
-          setPopUpType={setPopUpType}
-          setViewId={setViewId}
-          setOpenError={setOpenError}
-          setMessage={setMessage}
-          getUserList={getUserList}
-          selectType={selectType}
-        />
-      ) : (
-        <Company
-          isDetails={false}
-          companyList={companyList}
-          setOpenPopUp={setOpenPopUp}
-          setPopUpType={setPopUpType}
-          setViewId={setViewId}
-          setOpenError={setOpenError}
-          setMessage={setMessage}
-          getCompanyList={getCompanyList}
-          selectType={selectType}
-        />
-      )}
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 3 }}
+        className="main-body-component"
+      >
+        {selectType === "usr" ? (
+          <Users
+            isDetails={false}
+            usersList={usersList}
+            setOpenPopUp={setOpenPopUp}
+            setPopUpType={setPopUpType}
+            setViewId={setViewId}
+            setOpenError={setOpenError}
+            setMessage={setMessage}
+            getUserList={getUserList}
+            selectType={selectType}
+          />
+        ) : (
+          <Company
+            isDetails={false}
+            companyList={companyList}
+            setOpenPopUp={setOpenPopUp}
+            setPopUpType={setPopUpType}
+            setViewId={setViewId}
+            setOpenError={setOpenError}
+            setMessage={setMessage}
+            getCompanyList={getCompanyList}
+            selectType={selectType}
+          />
+        )}
 
-      <PopUpBase
-        selectType={selectType}
-        handlePopUpClose={handlePopUpClose}
-        openPopUp={openPopUp}
-        popUpType={popUpType}
-        viewId={viewId}
-        setViewId={setViewId}
-        setPopUpType={setPopUpType}
-        companyList={companyList}
-        getCompanyList={getCompanyList}
-        getUserList={getUserList}
-        setOpenPopUp={setOpenPopUp}
-        setOpenError={setOpenError}
-        setMessage={setMessage}
-      />
-      {openError && (
-        <ErrorMessage
-          errorMessage={errorMessage}
+        <PopUpBase
+          selectType={selectType}
+          handlePopUpClose={handlePopUpClose}
+          openPopUp={openPopUp}
+          popUpType={popUpType}
+          viewId={viewId}
+          setViewId={setViewId}
+          setPopUpType={setPopUpType}
+          companyList={companyList}
+          getCompanyList={getCompanyList}
+          getUserList={getUserList}
+          setOpenPopUp={setOpenPopUp}
           setOpenError={setOpenError}
-          openError={openError}
+          setMessage={setMessage}
         />
-      )}
-    </>
+        {openError && (
+          <ErrorMessage
+            errorMessage={errorMessage}
+            setOpenError={setOpenError}
+            openError={openError}
+          />
+        )}
+      </Box>
+    </Box>
   );
 }
 
