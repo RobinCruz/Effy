@@ -34,6 +34,7 @@ function EnhancedTableHead(props) {
           >
             <TableSortLabel
               className={headCell.id=='status'? " status-head text-bold":"text-bold"}
+              hideSortIcon={headCell.id == "name" ? false : true}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}

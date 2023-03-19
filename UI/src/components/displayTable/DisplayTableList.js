@@ -196,7 +196,7 @@ function DisplayTableList({
           </Button>
         )}
       </div>
-      {listValue[0].name != undefined && (
+      { listValue[0] && listValue[0].name != undefined && (
         <Paper sx={{ width: "100%", mb: 2 }}>
           <TableContainer>
             <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
@@ -236,12 +236,12 @@ function DisplayTableList({
                           component="th"
                           id={labelId}
                           scope="row"
-                          padding="1"
+                          padding="normal"
                         >
                           {row.name}
                         </StyledTableCell>
                         {Object.keys(row).length > 2 && (
-                          <StyledTableCell align="right" padding="1">
+                          <StyledTableCell align="right" padding="normal">
                             <span
                               className={
                                 row.active === 1 ? "active" : "inactive"
@@ -251,7 +251,7 @@ function DisplayTableList({
                             </span>
                           </StyledTableCell>
                         )}
-                        <StyledTableCell align="right" padding="1">
+                        <StyledTableCell align="right" padding="normal">
                           <a>
                             <Edit
                               className="action-items"

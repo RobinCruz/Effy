@@ -23,7 +23,6 @@ function CompanyDetails({
   });
   useEffect(() => {
     const iframe = document.getElementById("map-frameId");
-    const latlon = "13.0872004,80.2164421";
     axios.get("http://localhost:5000/company/" + viewId).then((response) => {
       setData(response.data);
       iframe.src = `https://maps.google.com/maps?q=${response.data.coordinates}&hl=es;&output=embed`;
@@ -32,21 +31,19 @@ function CompanyDetails({
   return (
     <div className="details-main">
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <span className="bold"> Company Name: </span>
-          {data.companyname}
+        <Grid item xs={4}>
+          <span className="head">Company Name</span> <br></br><br></br>
+          <span className="value">{data.companyname}</span> <br></br><br></br>
+        {/* </Grid>
+        <Grid item xs={6}> */}
+          <span className="head">Company Address</span> <br></br><br></br>
+          <span className="value">{data.companyaddress}</span>
         </Grid>
-        <Grid item xs={6}>
-          <span className="bold">Company Address: </span>
-          {data.companyaddress}
-        </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <iframe id="map-frameId" className="map-frame"></iframe>
         </Grid>
 
         <Grid item xs={12}>
-          <span className="bold">Users list:</span>
-          <br />
           <Users
             isDetails={true}
             usersList={data}

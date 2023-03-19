@@ -29,15 +29,6 @@ function PopUpBase({
       open={openPopUp}
     >
       <div className={popUpType.includes("list") ? "popup-form-main" : "popup-form-crud"}>
-        {/* <div className="flex-display">
-          <Close
-            className="display-flex-right"
-            onClick={() => {
-              handlePopUpClose();
-            }}
-          />
-        </div> */}
-        {/* <br /> */}
         {[
           "usr-create-form",
           "usr-edit-form",

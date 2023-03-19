@@ -12,8 +12,9 @@
   font-weight: bold;
 }
 .map-frame {
-  height: 10rem;
-  width: 20rem;
+  height: 13rem;
+  width: 29rem;
+  border: 0px;
 }
 .value {
   font-size:larger ;
